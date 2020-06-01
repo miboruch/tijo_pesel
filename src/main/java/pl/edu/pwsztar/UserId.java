@@ -4,6 +4,10 @@ import java.util.Optional;
 
 final class UserId implements UserIdChecker {
 
+    public String getId() {
+        return id;
+    }
+
     private final String id;    // NR. PESEL
 
     public UserId(final String id) {
@@ -12,7 +16,7 @@ final class UserId implements UserIdChecker {
 
     @Override
     public boolean isCorrectSize() {
-        return false;
+        return getId() != null && !getId().equals("") && getId().length() == 11;
     }
 
     @Override

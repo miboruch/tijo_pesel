@@ -9,7 +9,7 @@ class UserIdSpec extends Specification {
         given:
             UserId userId = new UserId("98051101192")
         when:
-            boolean isCorrect = userId.isCorrect();
+            boolean isCorrect = userId.isCorrectSize();
         then:
             isCorrect
     }
@@ -17,7 +17,7 @@ class UserIdSpec extends Specification {
         given:
             UserId userId = new UserId("980511011921")
         when:
-            boolean isCorrect = userId.isCorrect();
+            boolean isCorrect = userId.isCorrectSize();
         then:
             !isCorrect
     }
@@ -25,7 +25,7 @@ class UserIdSpec extends Specification {
         given:
             UserId userId = new UserId("")
         when:
-            boolean isCorrect = userId.isCorrect();
+            boolean isCorrect = userId.isCorrectSize();
         then:
             !isCorrect
     }
@@ -33,7 +33,7 @@ class UserIdSpec extends Specification {
         given:
             UserId userId = new UserId(null)
         when:
-            boolean isCorrect = userId.isCorrect();
+            boolean isCorrect = userId.isCorrectSize();
         then:
             !isCorrect
     }
