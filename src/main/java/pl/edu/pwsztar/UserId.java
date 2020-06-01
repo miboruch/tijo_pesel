@@ -21,7 +21,9 @@ final class UserId implements UserIdChecker {
 
     @Override
     public Optional<Sex> getSex() {
-        return Optional.empty();
+        int value = Integer.parseInt(String.valueOf(getId().charAt(9)));
+
+        return value % 2 == 0 ? Optional.of(Sex.WOMAN) : Optional.of(Sex.MAN);
     }
 
     @Override
