@@ -1,6 +1,8 @@
 package pl.edu.pwsztar;
 
+import java.net.SocketException;
 import java.util.Optional;
+import java.util.stream.IntStream;
 
 final class UserId implements UserIdChecker {
 
@@ -28,7 +30,17 @@ final class UserId implements UserIdChecker {
 
     @Override
     public boolean isCorrect() {
-        return false;
+        String id = getId();
+        String[] separatedNumbers = id.split("");
+        int[] validationNumbers = {9, 7, 3, 1, 9, 7, 3, 1, 9, 7};
+
+        int sum = IntStream.range(0, validationNumbers.length)
+                .map(index -> validationNumbers[index] * Integer.parseInt(String.valueOf(separatedNumbers[index])))
+                .sum();
+
+        int lastChar = Integer.parseInt(String.valueOf(id.charAt(10)));
+
+        return sum % 10 == lastChar;
     }
 
     @Override
